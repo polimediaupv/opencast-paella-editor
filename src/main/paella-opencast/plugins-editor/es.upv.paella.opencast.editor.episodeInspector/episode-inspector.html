@@ -5,7 +5,7 @@
 	<div ng-show="mediapackage.media.track">
 		<h3>{{ "Media tracks" | translate }}</h3>
 		<div class="panel">
-			<div class="downloadsLinkContainer" ng-repeat="trackItem in mediapackage.media.track">			
+			<div class="downloadsLinkContainer" ng-repeat="trackItem in mediapackage.media.track | orderBy: 'type'">			
 				<a class="downloadsLinkItem" tabindex="4000" ng-href="{{trackItem.url}}" download>
 					<span class="downloadLinkText TypeFile Video" ng-show="trackItem.video">Video track</span>
 					<span class="downloadLinkText TypeFile Audio" ng-show="!trackItem.video && trackItem.audio">Audio track</span>

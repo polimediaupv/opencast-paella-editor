@@ -6,8 +6,9 @@ var mergeStream = require('merge-stream');
  
 var buildPath = "target/gulp";
 var opencastSrc = "../opencast";
-var paellaBunleSrc = opencastSrc + "/modules/engage-paella-player";
-var paellaSrc = paellaBunleSrc + "src/main/paella-opencast"
+//var paellaBunleSrc = opencastSrc + "/modules/engage-paella-player";
+//var paellaBunleSrc = "node_modules/paellaplayer";
+//var paellaSrc = paellaBunleSrc + "src/main/paella-opencast"
 var editorSrc = "src/main/paella-opencast"
 
 
@@ -40,9 +41,10 @@ gulp.task('paella-editor-opencast:compile', ['paella-editor-opencast:prepare'], 
 
 gulp.task('paella-editor-opencast:build', ["paella-editor-opencast:compile"], function(){
 	return gulp.src([
-		paellaBunleSrc + "/" + buildPath + '/paella/build/player/**',
+		//paellaBunleSrc + "/" + buildPath + '/paella/build/player/**',
+		'node_modules/paellaplayer/build/player/**',
 		buildPath + '/paella-editor/build/editor-files/**',
-		paellaSrc + '/ui/**',
+		//paellaSrc + '/ui/**',
 		editorSrc + '/ui/**'
 		
 	]).pipe(gulp.dest(buildPath + '/paella-editor-opencast'));	

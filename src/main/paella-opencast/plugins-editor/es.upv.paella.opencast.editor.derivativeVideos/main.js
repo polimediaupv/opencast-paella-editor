@@ -220,7 +220,7 @@
         }
 
         openCurrentVideo() {
-	        window.open("watch.html?id=" + this.currentClip.mediapackageID, '_blank');            
+	        window.open("/paella/ui/watch.html?id=" + this.currentClip.mediapackageID, '_blank');            
         }
 
         loadClips() {

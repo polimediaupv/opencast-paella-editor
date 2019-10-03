@@ -2,14 +2,18 @@
   "name": "paella-editor-opencast",
   "private": true,
   "scripts": {
+    "build": "gulp paella-editor-opencast:build",
     "eslint": "eslint --config ../opencast/docs/checkstyle/eslintrc.js src/main/paella-opencast/",
     "html-linter": "html-linter --config ../opencast/docs/checkstyle/html-linter.json 'src/main/resources/**/*.html'"
   },
   "devDependencies": {
-    "eslint": "^5.6.0",
-    "eslint-plugin-header": "^2.0.0",
-    "gulp": "^3.9.1",
-    "merge-stream": "^1.0.1",
-    "paella-editor": "github:polimediaupv/paella-editor#develop"
+    "eslint": "^6.5.0",
+    "eslint-plugin-header": "^3.0.0",
+    "gulp": "^4.0.2",
+    "merge-stream": "^2.0.0",
+    "paella-editor": "github:polimediaupv/paella-editor#develop",
+    "express": "^4.17.1",
+    "http-errors": "^1.7.3",
+    "http-proxy": "^1.17.0"
   }
 }

@@ -23,22 +23,22 @@ gulp.task('paella-editor-opencast:prepare:source', function(){
 	return mergeStream(s1,s2);
 });
 
-gulp.task('paella-editor-opencast:prepare', ['paella-editor-opencast:prepare:source'], function(cb){
+gulp.task('paella-editor-opencast:prepare', gulp.series('paella-editor-opencast:prepare:source', function(cb){
 	var cmd_npm = spawn('npm', ['install'], {cwd: buildPath + '/paella-editor', stdio: 'inherit'});
 	cmd_npm.on('close', function (code) {
 		cb(code);
 	});	
-});
+}));
 
-gulp.task('paella-editor-opencast:compile', ['paella-editor-opencast:prepare'], function(cb){
+gulp.task('paella-editor-opencast:compile', gulp.series('paella-editor-opencast:prepare', function(cb){
 	var cmd_npm = spawn('node', ['node_modules/gulp/bin/gulp.js', 'editorFiles'], {cwd: buildPath + '/paella-editor'/*, stdio: 'inherit'*/});
 	cmd_npm.on('close', function (code) {
 		cb(code);
 	});	
-});
+}));
 
 
-gulp.task('paella-editor-opencast:build', ["paella-editor-opencast:compile"], function(){
+gulp.task('paella-editor-opencast:build', gulp.series("paella-editor-opencast:compile", function(){
 	return gulp.src([
 		paellaBunleSrc + "/" + buildPath + '/paella/build/player/**',
 		buildPath + '/paella-editor/build/editor-files/**',
@@ -46,10 +46,10 @@ gulp.task('paella-editor-opencast:build', ["paella-editor-opencast:compile"], fu
 		editorSrc + '/ui/**'
 		
 	]).pipe(gulp.dest(buildPath + '/paella-editor-opencast'));	
-});
+}));
 
 
 
-gulp.task('default', ['paella-editor-opencast:build']);	
+gulp.task('default', gulp.series('paella-editor-opencast:build'));
 
 

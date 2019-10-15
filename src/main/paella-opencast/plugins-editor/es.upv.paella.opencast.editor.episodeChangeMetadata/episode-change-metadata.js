@@ -97,7 +97,7 @@
 		onSave() {
 			let videoId = paella.initDelegate.getId();
 
-			return new Promise((resolve, reject) => {							
+			return new Promise((resolve, reject) => {
 				if  (	(EpisodeChangeMetadataState.episode.dcTitle == EpisodeChangeMetadataState.newTitle) && 
 						( (EpisodeChangeMetadataState.publish == EpisodeChangeMetadataState.newPublish) || (EpisodeChangeMetadataState.newPublish == undefined) )
 					) {
@@ -109,9 +109,11 @@
 						publish: EpisodeChangeMetadataState.newPublish,
 						serie: EpisodeChangeMetadataState.serie
 					};
+					
 					paella.data.write('changeMetadata', {id:videoId}, metadata, function(response,status) {
 						var pub = undefined;
 						
+						EpisodeChangeMetadataState.processing = true;
 						if (metadata.publish == "publish") { pub = true; }
 						if (metadata.publish == "unpublish") { pub = false; }
 						

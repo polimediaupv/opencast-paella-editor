@@ -28,7 +28,7 @@
 						
 			<div class="form-group">
 				<label >{{'Visibility' | translate}}</label>
-				<div class="alert alert-info" role="alert" ng-show="(EpisodeChangeMetadataState.publish == 'autopublish') && (!EpisodeChangeMetadataState.newPublish)">
+				<div class="alert alert-info" role="alert" ng-show="(EpisodeChangeMetadataState.publish == 'autopublish') && (EpisodeChangeMetadataState.newPublish == 'autopublish')">
 					{{'The episode will be visible automatically in 7 days' | translate}}
 				</div>				
 				<div class="radio">

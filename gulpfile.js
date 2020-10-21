@@ -3,7 +3,8 @@ var gulp = require('gulp');
 var spawn = require('child_process').spawn;
 var mergeStream = require('merge-stream');
 
- 
+var PAELLA_VERSION = '6.2.7';
+
 var buildPath = "target/gulp";
 var opencastSrc = "../opencast";
 var paellaBunleSrc = opencastSrc + "/modules/engage-paella-player";
@@ -40,7 +41,7 @@ gulp.task('paella-editor-opencast:compile', gulp.series('paella-editor-opencast:
 
 gulp.task('paella-editor-opencast:build', gulp.series("paella-editor-opencast:compile", function(){
 	return gulp.src([
-		paellaBunleSrc + "/" + buildPath + '/paella/build/player/**',
+		paellaBunleSrc + "/" + buildPath + '/paella-' + PAELLA_VERSION + '/build/player/**',
 		buildPath + '/paella-editor/build/editor-files/**',
 		paellaSrc + '/ui/**',
 		editorSrc + '/ui/**'
